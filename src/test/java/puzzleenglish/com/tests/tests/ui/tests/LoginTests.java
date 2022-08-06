@@ -18,6 +18,22 @@ public class LoginTests extends TestBase {
     String password = appConfig.password();
 
     @Test
+    @AllureId("11242")
+    @DisplayName("Успешная авторизация")
+    void successfulAuthorization() {
+        mainPage.openPage()
+                .clickSignIn();
+
+        signInPopup.checkWindow()
+                .checkTitle("Войти")
+                .fillEmail(email)
+                .fillPassword(password)
+                .clickSignIn();
+
+        mainPage.checkPersonalPlan("Личный план");
+    }
+
+    @Test
     @AllureId("11241")
     @DisplayName("Проверка ввода неверного email при авторизации")
     void fillInvalidEmail() {
@@ -43,21 +59,5 @@ public class LoginTests extends TestBase {
                 .fillPassword("1111")
                 .clickSignIn()
                 .checkErrorSignIn("Неверный пароль");
-    }
-
-    @Test
-    @AllureId("11242")
-    @DisplayName("Успешная авторизация")
-    void successfulAuthorization() {
-        mainPage.openPage()
-                .clickSignIn();
-
-        signInPopup.checkWindow()
-                .checkTitle("Войти")
-                .fillEmail(email)
-                .fillPassword(password)
-                .clickSignIn();
-
-        mainPage.checkPersonalPlan("Личный план");
     }
 }
