@@ -24,7 +24,7 @@ public class LoginTests extends TestBase {
         mainPage.openPage()
                 .clickSignIn();
 
-        signInPopup.checkWindow()
+        signInPopup.checkWindowExist()
                 .checkTitle("Войти")
                 .fillEmail(email)
                 .fillPassword(password)
@@ -39,7 +39,7 @@ public class LoginTests extends TestBase {
     void fillInvalidEmail() {
         mainPage.openPage()
                 .clickSignIn();
-        signInPopup.checkWindow()
+        signInPopup.checkWindowExist()
                 .checkTitle("Войти")
                 .fillEmail("1111")
                 .fillPassword("1111")
@@ -53,7 +53,7 @@ public class LoginTests extends TestBase {
     void fillIncorrectPassword() {
         mainPage.openPage()
                 .clickSignIn();
-        signInPopup.checkWindow()
+        signInPopup.checkWindowExist()
                 .checkTitle("Войти")
                 .fillEmail(email)
                 .fillPassword("1111")

@@ -22,7 +22,7 @@ public class SignInPopup {
     }
 
     @Step("Проверить, что открыто окно входа")
-    public SignInPopup checkWindow() {
+    public SignInPopup checkWindowExist() {
         container.shouldBe(visible);
         return this;
     }
