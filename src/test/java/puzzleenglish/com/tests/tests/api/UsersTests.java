@@ -21,6 +21,7 @@ import static puzzleenglish.com.tests.tests.api.specs.Specs.responseSuccess;
 @Owner("ibokov")
 @Tag("api")
 public class UsersTests {
+
     @Test
     @AllureId("11309")
     @DisplayName("Проверка рейтинга пользователей")
@@ -42,18 +43,14 @@ public class UsersTests {
     @DisplayName("Проверка наград пользователя")
     public void checkAchievements() {
         String userId = "10144779";
-        Achievement[] expectedAchievementList = {
-                new Achievement().setAchievements("Превзошел своего Тичера", "Пройден любой курс Тичера", 100),
-                new Achievement().setAchievements("Словоед", "Добавлено 100 слов в словарь", 100),
-                new Achievement().setAchievements("Упорство и труд", "Выполнены 10 заданий Личного плана", 100),
-                new Achievement().setAchievements("Не теряя времени", "На сайте 5 дней подряд", 100),
-                new Achievement().setAchievements("Есть план!", "Пройдено ознакомление с личным планом", 100),
-                new Achievement().setAchievements("10-ый уровень взят!", "Получен 10-ый уровень", 80),
-                new Achievement().setAchievements("Игроман", "Сыграно 100 игр", 17),
-                new Achievement().setAchievements("Поболтаем?", "Оставлено 10 комментариев", 10),
-                new Achievement().setAchievements("Важный шаг", "Пройден тест на уровень языка", 0),
-                new Achievement().setAchievements("Puzzle Hero", "3 дня в топе рейтинга", 0)
-        };
+        Achievement expectedFirstAchievement = new Achievement();
+        expectedFirstAchievement.setTitle("Превзошел своего Тичера");
+        expectedFirstAchievement.setDescription("Пройден любой курс Тичера");
+        expectedFirstAchievement.setProgress(100);
+        Achievement expectedSecondAchievement = new Achievement();
+        expectedSecondAchievement.setTitle("Словоед");
+        expectedSecondAchievement.setDescription("Добавлено 100 слов в словарь");
+        expectedSecondAchievement.setProgress(100);
 
         Response response = given()
                 .spec(requestUsers)
@@ -65,8 +62,7 @@ public class UsersTests {
 
         Achievement[] actualAchievementList = response.getResponse().getUserInfo().getAchievements();
 
-        for (int i = 0; i < expectedAchievementList.length; i++) {
-            assertThat(actualAchievementList[i]).isEqualTo(expectedAchievementList[i]);
-        }
+        assertThat(actualAchievementList[0]).isEqualTo(expectedFirstAchievement);
+        assertThat(actualAchievementList[1]).isEqualTo(expectedSecondAchievement);
     }
 }

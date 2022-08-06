@@ -9,11 +9,4 @@ public class Achievement {
     String title;
     String description;
     Integer progress;
-
-    public Achievement setAchievements(String title, String description, Integer progress) {
-        this.title = title;
-        this.description = description;
-        this.progress = progress;
-        return this;
-    }
 }

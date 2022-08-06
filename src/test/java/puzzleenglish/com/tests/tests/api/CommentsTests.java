@@ -62,11 +62,9 @@ public class CommentsTests {
         Comment[] comments = response.getComments();
 
         assertThat(comments.length).isEqualTo(2);
-
         assertThat(comments[0].getCommentId()).isEqualTo("10227966");
         assertThat(comments[0].getCommentAuthor()).isEqualTo("Мария");
         assertThat(comments[0].getCommentContent()).isEqualTo("Мы уже готовы - We are already ready.");
-
         assertThat(comments[1].getCommentId()).isEqualTo("10504696");
         assertThat(comments[1].getCommentAuthor()).isEqualTo("d-olinka");
         assertThat(comments[1].getCommentContent()).isEqualTo("Здравствуйте. Видео не включается второй день, невозможно пройти урок");
