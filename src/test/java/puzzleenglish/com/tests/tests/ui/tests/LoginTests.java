@@ -8,7 +8,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import puzzleenglish.com.tests.config.PuzzleEnglish;
+import puzzleenglish.com.tests.config.CredentialsConfig;
 import puzzleenglish.com.tests.tests.ui.pages.MainPage;
 import puzzleenglish.com.tests.tests.ui.pages.SignInPopup;
 
@@ -20,7 +20,7 @@ public class LoginTests extends TestBase {
 
     MainPage mainPage = new MainPage();
     SignInPopup signInPopup = new SignInPopup();
-    PuzzleEnglish puzzleEnglish = ConfigFactory.create(PuzzleEnglish.class);
+    CredentialsConfig puzzleEnglish = ConfigFactory.create(CredentialsConfig.class);
     String email = puzzleEnglish.email();
     String password = puzzleEnglish.password();
 

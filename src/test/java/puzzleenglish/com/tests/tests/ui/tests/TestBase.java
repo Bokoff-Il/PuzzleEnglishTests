@@ -8,8 +8,12 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import puzzleenglish.com.tests.config.RemoteWebDriver;
+import puzzleenglish.com.tests.config.APIConfig;
+import puzzleenglish.com.tests.config.AppConfig;
+import puzzleenglish.com.tests.config.RemoteDriverConfig;
 import puzzleenglish.com.tests.tests.ui.helpers.Attach;
+
+import static java.lang.String.format;
 
 
 public class TestBase {
@@ -18,23 +22,22 @@ public class TestBase {
     static void beforeAll() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        RemoteWebDriver remoteWebDriver = ConfigFactory.create(RemoteWebDriver.class);
-        String login = remoteWebDriver.login();
-        String password = remoteWebDriver.password();
+        AppConfig appConfig = ConfigFactory.create(AppConfig.class);
+        RemoteDriverConfig remoteDriverConfig = ConfigFactory.create(RemoteDriverConfig.class);
 
-        String remote = System.getProperty("remote", "selenoid.autotests.cloud/wd/hub");
+        String login = remoteDriverConfig.login();
+        String password = remoteDriverConfig.password();
+        String remoteDriverUrl = appConfig.remoteDriverUrl();
 
-        Configuration.baseUrl = System.getProperty("baseUrl", "https://puzzle-english.com");
-        Configuration.remote = "https://" + login + ":" + password + "@" + remote;
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-
+        Configuration.baseUrl = appConfig.baseUrl();
+        Configuration.remote = format("https://%s:%s@%s", login, password, remoteDriverUrl);
+        Configuration.browser = appConfig.browser();
+        Configuration.browserSize = appConfig.browserSize();
+        Configuration.browserVersion = appConfig.browserVersion();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
     }
 
     @AfterEach
