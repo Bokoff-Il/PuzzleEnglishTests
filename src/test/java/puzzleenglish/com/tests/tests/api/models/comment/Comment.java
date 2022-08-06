@@ -15,5 +15,4 @@ public class Comment {
 
     @JsonProperty("comment_content")
     String commentContent;
-
 }

@@ -11,8 +11,8 @@ import puzzleenglish.com.tests.tests.api.models.user.UserInfo;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserResponse {
     @JsonProperty("user_info")
-    public UserInfo userInfo;
-    public Rating[] rating;
-    public Comment[] comments;
-    public Integer allCommentsCount;
+    UserInfo userInfo;
+    Rating[] rating;
+    Comment[] comments;
+    Integer allCommentsCount;
 }

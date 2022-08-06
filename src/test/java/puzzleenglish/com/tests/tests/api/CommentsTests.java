@@ -4,11 +4,10 @@ import io.qameta.allure.AllureId;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import puzzleenglish.com.tests.tests.api.models.PuzzleEnglishResponse;
+import puzzleenglish.com.tests.tests.api.models.Response;
 import puzzleenglish.com.tests.tests.api.models.comment.Comment;
 import puzzleenglish.com.tests.tests.api.models.comment.CommentsResponse;
 
@@ -27,7 +26,7 @@ public class CommentsTests {
     @AllureId("11306")
     @DisplayName("Проверка комментариев пользователя")
     public void checkUsersComments() {
-        Response response = given()
+        CommentsResponse response = given()
                 .spec(requestComments)
                 .formParam("page", 1)
                 .formParam("user_id", 10144779)
@@ -35,12 +34,11 @@ public class CommentsTests {
                 .post("/getMyComments")
                 .then()
                 .spec(responseSuccess)
-                .extract().response();
+                .extract().as(CommentsResponse.class);
 
-        Comment[] comments = response.getBody().as(CommentsResponse.class).getComments();
+        Comment[] comments = response.getComments();
 
         assertThat(comments.length).isEqualTo(1);
-
         assertThat(comments[0].getCommentId()).isEqualTo("10513973");
         assertThat(comments[0].getCommentAuthor()).isEqualTo("bokoff.il");
         assertThat(comments[0].getCommentContent()).isEqualTo("Спасибо за урок");
@@ -50,7 +48,7 @@ public class CommentsTests {
     @AllureId("11307")
     @DisplayName("Проверка избранных комментариев пользователя")
     public void checkUsersFavoriteComments() {
-        Response response = given()
+        CommentsResponse response = given()
                 .spec(requestComments)
                 .formParam("offset", 0)
                 .formParam("type", 1)
@@ -59,9 +57,9 @@ public class CommentsTests {
                 .post("/getFavoriteComments")
                 .then()
                 .spec(responseSuccess)
-                .extract().response();
+                .extract().as(CommentsResponse.class);
 
-        Comment[] comments = response.getBody().as(CommentsResponse.class).getComments();
+        Comment[] comments = response.getComments();
 
         assertThat(comments.length).isEqualTo(2);
 
@@ -87,14 +85,11 @@ public class CommentsTests {
                 .post("/getComments")
                 .then()
                 .spec(responseSuccess)
-                .extract().response();
+                .extract().as(Response.class);
 
-        PuzzleEnglishResponse puzzleEnglishResponse = response.getBody().as(PuzzleEnglishResponse.class);
-        Comment[] comments = puzzleEnglishResponse.getComments();
+        Comment[] comments = response.getResponse().getComments();
 
         assertThat(comments).isNotEmpty();
-        assertThat(puzzleEnglishResponse.getCountComments()).isEqualTo(13);
-
+        assertThat(response.getResponse().getAllCommentsCount()).isEqualTo(13);
     }
 }
-

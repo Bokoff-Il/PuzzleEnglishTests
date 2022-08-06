@@ -4,12 +4,11 @@ import io.qameta.allure.AllureId;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import puzzleenglish.com.tests.tests.api.models.user.Achievement;
-import puzzleenglish.com.tests.tests.api.models.PuzzleEnglishResponse;
+import puzzleenglish.com.tests.tests.api.models.Response;
 import puzzleenglish.com.tests.tests.api.models.user.Rating;
 
 import static io.restassured.RestAssured.given;
@@ -26,16 +25,16 @@ public class UsersTests {
     @AllureId("11309")
     @DisplayName("Проверка рейтинга пользователей")
     public void checkUserForRating() {
-        Response response = given()
+       Response response = given()
                 .spec(requestUsers)
                 .when()
                 .get("/user/getUsersForRating")
                 .then()
                 .spec(responseSuccess)
-                .extract().response();
+                .extract().as(Response.class);
 
-        Rating[] rating = response.getBody().as(PuzzleEnglishResponse.class).getRating();
-        assertThat(rating).isNotEmpty();
+       Rating[] ratings = response.getResponse().getRating();
+       assertThat(ratings).isNotEmpty();
     }
 
     @Test
@@ -62,9 +61,9 @@ public class UsersTests {
                 .get("/userLK/getProgressPage?userId=" + userId)
                 .then()
                 .spec(responseSuccess)
-                .extract().response();
+                .extract().as(Response.class);
 
-        Achievement[] actualAchievementList = response.getBody().as(PuzzleEnglishResponse.class).getAchievements();
+        Achievement[] actualAchievementList = response.getResponse().getUserInfo().getAchievements();
 
         for (int i = 0; i < expectedAchievementList.length; i++) {
             assertThat(actualAchievementList[i]).isEqualTo(expectedAchievementList[i]);
