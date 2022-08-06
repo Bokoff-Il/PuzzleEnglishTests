@@ -12,12 +12,18 @@ import puzzleenglish.com.tests.config.APIConfig;
 import puzzleenglish.com.tests.config.AppConfig;
 import puzzleenglish.com.tests.config.RemoteDriverConfig;
 import puzzleenglish.com.tests.tests.ui.helpers.Attach;
+import puzzleenglish.com.tests.tests.ui.pages.MainPage;
+import puzzleenglish.com.tests.tests.ui.pages.QuestionsPersonalPlanPage;
+import puzzleenglish.com.tests.tests.ui.pages.SignInPopup;
 
 import static java.lang.String.format;
 
 
 public class TestBase {
 
+    MainPage mainPage = new MainPage();
+    QuestionsPersonalPlanPage questionsPersonalPlanPage = new QuestionsPersonalPlanPage();
+    SignInPopup signInPopup = new SignInPopup();
     @BeforeAll
     static void beforeAll() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());

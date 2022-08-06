@@ -20,18 +20,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Owner("ibokov")
 @Tag("ui")
 public class MainPageTests extends TestBase {
-    MainPage mainPage = new MainPage();
-    QuestionsPersonalPlanPage questionsPersonalPlanPage = new QuestionsPersonalPlanPage();
 
     @Test
     @AllureId("11243")
-    @DisplayName("Проверка заголовков и наличия кнопки 'Начать заниматься' на главной странице")
-    void checkTitleAndButton() {
+    @DisplayName("Проверка заголовков на главной странице")
+    void checkTitleOnMainPage() {
        mainPage.openPage()
                .checkMainTitle("Выучите английский с Puzzle English\nи верните 30% за обучение! ")
-               .checkSubTitle("Нескучное онлайн-обучение английскому языку с помощью игр и интересных заданий в любое удобное для вас время ")
-               .checkButtonStartStudy();
+               .checkSubTitle("Нескучное онлайн-обучение английскому языку с помощью игр и " +
+                       "интересных заданий в любое удобное для вас время ");
     }
+
+    @Test
+    @AllureId("11802")
+    @DisplayName("Проверка  наличия кнопки 'Начать заниматься' на главной странице")
+    void checkExistStartStudyButton() {
+        mainPage.openPage()
+                .checkExistButtonStartStudy();
+    }
+
     @Test
     @AllureId("11244")
     @DisplayName("Проверка вопросов личного плана")

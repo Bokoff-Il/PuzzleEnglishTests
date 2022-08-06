@@ -17,13 +17,9 @@ import puzzleenglish.com.tests.tests.ui.pages.SignInPopup;
 @Owner("ibokov")
 @Tag("ui")
 public class LoginTests extends TestBase {
-
-    MainPage mainPage = new MainPage();
-    SignInPopup signInPopup = new SignInPopup();
-    CredentialsConfig puzzleEnglish = ConfigFactory.create(CredentialsConfig.class);
-    String email = puzzleEnglish.email();
-    String password = puzzleEnglish.password();
-
+    CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class);
+    String email = credentialsConfig.email();
+    String password = credentialsConfig.password();
 
     @Test
     @AllureId("11241")
