@@ -17,46 +17,27 @@ public class MainPage {
     SelenideElement personPlan = $(".redesign-plan-top");
 
     @Step("Открыть главную страницу")
-    public MainPage openMainPage() {
+    public MainPage openPage() {
         open(baseUrl);
         return this;
     }
 
     @Step("Проверить заголовок страницы")
-    public MainPage checkMainTitle(String title) {
-        checkText(mainTitle, title);
+    public MainPage checkMainTitle(String text) {
+        mainTitle.shouldHave(text(text));
         return this;
     }
 
     @Step("Проверить подзаголовок страницы")
-    public MainPage checkSubTitle(String title) {
-        checkText(subTitle, title);
+    public MainPage checkSubTitle(String text) {
+        subTitle.shouldHave(text(text));
         return this;
     }
 
-    @Step("Проверить наличие кнопки Начать заниматься")
-    public MainPage checkButtonStartStudy(String text) {
-        checkButton(startStudyButton, text);
-        return this;
-    }
-
-    @Step("Проверить наличие кнопки и текст на кнопке")
-    private MainPage checkButton(SelenideElement locator, String text) {
-        locator.shouldBe(visible);
-        locator.shouldHave(text(text));
-        return this;
-    }
-
-    @Step("Проверить подзаголовок страницы")
-    private MainPage checkText(SelenideElement locator, String text) {
-        locator.shouldHave(text(text));
-        return this;
-    }
-
-    @Step("Нажать кнопку Начать заниматься")
-    public MainPage clickStartStudyButton() {
-        startStudyButton.click();
-        return this;
+    @Step("Проверить наличие кнопки 'Начать заниматься'")
+    public MainPage checkButtonStartStudy() {
+       startStudyButton.shouldBe(visible);
+       return this;
     }
 
     @Step("Нажать кнопку Вход")

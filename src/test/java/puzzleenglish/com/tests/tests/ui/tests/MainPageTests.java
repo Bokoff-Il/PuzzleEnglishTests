@@ -27,10 +27,10 @@ public class MainPageTests extends TestBase {
     @AllureId("11243")
     @DisplayName("Проверка заголовков и наличия кнопки 'Начать заниматься' на главной странице")
     void checkTitleAndButton() {
-       mainPage.openMainPage()
+       mainPage.openPage()
                .checkMainTitle("Выучите английский с Puzzle English\nи верните 30% за обучение! ")
                .checkSubTitle("Нескучное онлайн-обучение английскому языку с помощью игр и интересных заданий в любое удобное для вас время ")
-               .checkButtonStartStudy("Начать заниматься");
+               .checkButtonStartStudy();
     }
     @Test
     @AllureId("11244")

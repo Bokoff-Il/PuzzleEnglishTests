@@ -29,7 +29,7 @@ public class LoginTests extends TestBase {
     @AllureId("11241")
     @DisplayName("Проверка ввода неверного email при авторизации")
     void fillInvalidEmail() {
-        mainPage.openMainPage()
+        mainPage.openPage()
                 .clickSignIn();
         signInPopup.checkWindow()
                 .checkTitle("Войти")
@@ -43,7 +43,7 @@ public class LoginTests extends TestBase {
     @AllureId("11240")
     @DisplayName("Проверка ввода неверного пароля при авторизации")
     void fillIncorrectPassword() {
-        mainPage.openMainPage()
+        mainPage.openPage()
                 .clickSignIn();
         signInPopup.checkWindow()
                 .checkTitle("Войти")
@@ -57,7 +57,7 @@ public class LoginTests extends TestBase {
     @AllureId("11242")
     @DisplayName("Успешная авторизация")
     void successfulAuthorization() {
-        mainPage.openMainPage()
+        mainPage.openPage()
                 .clickSignIn();
 
         signInPopup.checkWindow()
