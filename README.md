@@ -76,6 +76,7 @@ gradle clean ui
 - Адрес стенда для API тестов
 - Назвавние браузера
 - Разрешение браузера
+- Версия браузера
 - Ссылка на удаленный Selenoid
 
 <img title="Jenkins ParamStart" src="images/screenshots/params.png">
@@ -90,6 +91,7 @@ ${TASK}
 -DbaseUri=${BASE_URI}
 -DbrowserVersion=${BROWSER_VERSION}
 -DbrowserSize=${BROWSER_SIZE}
+-DremoteDriverUrl=${REMOTE}
 ```
 
 
