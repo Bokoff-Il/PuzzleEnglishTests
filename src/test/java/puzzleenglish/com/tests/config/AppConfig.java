@@ -6,14 +6,17 @@ import org.aeonbits.owner.Config;
 public interface AppConfig extends Config {
     @DefaultValue("https://puzzle-english.com")
     String baseUrl();
+
     @DefaultValue("chrome")
     String browser();
-    @DefaultValue("91.0")
+
+    @DefaultValue("99.0")
     String browserVersion();
+
     @DefaultValue("1920x1080")
     String browserSize();
-    @DefaultValue("selenoid.autotests.cloud/wd/hub")
-    String remoteDriverUrl();
+
     String email();
+
     String password();
 }

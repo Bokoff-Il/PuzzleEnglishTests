@@ -17,7 +17,6 @@ import puzzleenglish.com.tests.tests.ui.pages.SignInPopup;
 
 import static java.lang.String.format;
 
-
 public class TestBase {
 
     MainPage mainPage = new MainPage();
@@ -31,9 +30,9 @@ public class TestBase {
     static void beforeAll() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
+        String remoteDriverUrl = remoteDriverConfig.remoteDriverUrl();
         String login = remoteDriverConfig.login();
         String password = remoteDriverConfig.password();
-        String remoteDriverUrl = appConfig.remoteDriverUrl();
 
         Configuration.baseUrl = appConfig.baseUrl();
         Configuration.remote = format("https://%s:%s@%s", login, password, remoteDriverUrl);

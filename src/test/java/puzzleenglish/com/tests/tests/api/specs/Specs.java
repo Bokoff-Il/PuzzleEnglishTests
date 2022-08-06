@@ -7,14 +7,14 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
-import puzzleenglish.com.tests.config.APIConfig;
+import puzzleenglish.com.tests.config.ApiConfig;
 
 import static io.restassured.http.ContentType.JSON;
 import static puzzleenglish.com.tests.tests.api.helpers.CustomApiListener.withCustomTemplates;
 
 public class Specs {
     static String baseUri = System.getProperty("baseUri", "https://puzzle-english.com");
-    static APIConfig apiConfig = ConfigFactory.create(APIConfig.class);
+    static ApiConfig apiConfig = ConfigFactory.create(ApiConfig.class);
     public static RequestSpecification requestUsers = with()
             .filter(withCustomTemplates())
             .baseUri(baseUri)
