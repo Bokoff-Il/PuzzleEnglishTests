@@ -14,4 +14,6 @@ public interface AppConfig extends Config {
     String browserSize();
     @DefaultValue("selenoid.autotests.cloud/wd/hub")
     String remoteDriverUrl();
+    String email();
+    String password();
 }

@@ -8,7 +8,6 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import puzzleenglish.com.tests.config.APIConfig;
 import puzzleenglish.com.tests.config.AppConfig;
 import puzzleenglish.com.tests.config.RemoteDriverConfig;
 import puzzleenglish.com.tests.tests.ui.helpers.Attach;
@@ -24,12 +23,13 @@ public class TestBase {
     MainPage mainPage = new MainPage();
     QuestionsPersonalPlanPage questionsPersonalPlanPage = new QuestionsPersonalPlanPage();
     SignInPopup signInPopup = new SignInPopup();
+
+    static AppConfig appConfig = ConfigFactory.create(AppConfig.class);
+    static RemoteDriverConfig remoteDriverConfig = ConfigFactory.create(RemoteDriverConfig.class);
+
     @BeforeAll
     static void beforeAll() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
-        AppConfig appConfig = ConfigFactory.create(AppConfig.class);
-        RemoteDriverConfig remoteDriverConfig = ConfigFactory.create(RemoteDriverConfig.class);
 
         String login = remoteDriverConfig.login();
         String password = remoteDriverConfig.password();

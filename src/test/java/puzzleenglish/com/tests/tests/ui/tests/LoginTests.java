@@ -4,22 +4,18 @@ import io.qameta.allure.AllureId;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import puzzleenglish.com.tests.config.CredentialsConfig;
-import puzzleenglish.com.tests.tests.ui.pages.MainPage;
-import puzzleenglish.com.tests.tests.ui.pages.SignInPopup;
 
 @Epic("UI")
 @Feature("Авторизация")
 @Owner("ibokov")
 @Tag("ui")
 public class LoginTests extends TestBase {
-    CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class);
-    String email = credentialsConfig.email();
-    String password = credentialsConfig.password();
+
+    String email = appConfig.email();
+    String password = appConfig.password();
 
     @Test
     @AllureId("11241")
