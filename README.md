@@ -6,9 +6,9 @@
 - <a href="#computer-технологии-и-инструменты">Технологии и инструменты</a>
 - <a href="#heavy_check_mark-реализованные-проверки-ui">Реализованные проверки UI</a>
 - <a href="#heavy_check_mark-реализованные-проверки-api">Реализованные проверки API</a>
-- <a href="#electric_plug-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B0-%D0%B2-jenkins">Сборка в Jenkins</a>
 - <a href="#arrow_forward-запуск-из-терминала">Запуск из терминала</a>
 - <a href="#gear-запуск-тестов-с-выбором-параметров">Запуск тестов с выбором параметров</a>
+- - <a href="#electric_plug-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B0-%D0%B2-jenkins">Сборка в Jenkins</a>
 - <a href="#open_book-allure-отчет">Allure отчет</a>
 - <a href="#robot-отчет-в-telegram">Отчет в Telegram</a>
 - <a href="#open_book-интеграция-с-allure-testops">Интеграция с Allure TestOps</a>
@@ -47,14 +47,6 @@
 - Проверка наград пользователя
 - Проверка рейтинга пользователей
 
-## :electric_plug: Сборка в Jenkins
-
-### <a target="_blank" href="https://jenkins.autotests.cloud/job/012-bokoffil-diplom1/">Сборка в Jenkins</a>
-
-<p align="center">
-<img title="Jenkins Dashboard" src="images/screenshots/Jenkins dashboard.png">
-</p>  
-
 ## :arrow_forward: Запуск из терминала
 
 Все тесты:
@@ -75,18 +67,12 @@ UI тесты:
 gradle clean ui
 ```
 
-Mobile тесты:
-
-```
-gradle clean mobile
-```
-
 ## :gear: Запуск тестов с выбором параметров
 
 - ### Параметры
 - Тип запускаемых тестов
 - Адрес стенда для UI тестов
-- дрес стенда для API тестов
+- Адрес стенда для API тестов
 - Назвавние браузера
 - Разрешение браузера
 - Ссылка на удаленный Selenoid
@@ -104,6 +90,16 @@ ${TASK}
 -DbrowserVersion=${BROWSER_VERSION}
 -DbrowserSize=${BROWSER_SIZE}
 ```
+
+
+## :electric_plug: Сборка в Jenkins
+
+### <a target="_blank" href="https://jenkins.autotests.cloud/job/012-bokoffil-diplom1/">Сборка в Jenkins</a>
+
+<p align="center">
+<img title="Jenkins Dashboard" src="images/screenshots/Jenkins dashboard.png">
+</p>  
+
 
 ## :open_book: Allure отчет
 
@@ -148,7 +144,7 @@ ${TASK}
 </p>
 
 ## :film_projector: Видео примеры прохождения тестов
-> К каждому тесту в отчете прилагается видео. Одно из таких видео представлено ниже.
+> К каждому тесту в отчете прилагается видео. Видео теста "Проверка вопросов личного плана" представлено ниже.
 <p align="center">
   <img title="Selenoid Video" src="images/screenshots/016b2f12b9c662dccc8a4077c6476a23.gif">
 </p>
